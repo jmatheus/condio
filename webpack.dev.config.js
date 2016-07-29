@@ -9,6 +9,15 @@ module.exports = {
     './src/index'
   ],
 
+  devServer: {
+   contentBase: 'src/', // Relative directory for base of server
+   devtool: 'eval',
+   hot: true, // Live-reload
+   inline: true,
+   port: 3000, // Port Number
+   host: 'localhost', // Change to '0.0.0.0' for external facing server
+ },
+
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
@@ -23,7 +32,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.js?$/,
-        loader: 'babel',
+        loaders: ['react-hot', 'babel-loader'],
         include: path.join(__dirname, 'src')
       },
       { test: /\.scss?$/,
