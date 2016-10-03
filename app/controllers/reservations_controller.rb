@@ -5,12 +5,12 @@ class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.where(user_id: params[:user_id], event_date: Date.today..1.year.since, status: 'active')
                     .order(event_date: :asc)
-    render json: @reservations
+    render json: @reservations, root: nil
   end
 
   def history
     @reservations = Reservation.where(user_id: params[:user_id], event_date: 10.year.ago..Date.today).order(event_date: :desc)
-    render json: @reservations
+    render json: @reservations, root: nil
   end
 
   # GET /reservations/1
