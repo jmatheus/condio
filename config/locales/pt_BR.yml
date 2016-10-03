@@ -1,0 +1,90 @@
+pt-BR:
+  datetime:
+    distance_in_words:
+      x_days:
+        one: '1 dia'
+        other: '%{count} dias'
+      about_x_hours:
+        one: '1 hora'
+        other: '%{count} horas'
+      x_months:
+        one: '1 mês'
+        other: '%{count} meses'
+  activerecord:
+    models:
+      bill:
+        one: Boleto
+        other: Boletos
+      building_location:
+        one: Local
+        other: Locais
+      building_message:
+        one: Aviso
+        other: Avisos
+      user:
+        one: Usuário
+        other: Usuários
+      device:
+        one: Dispositivo
+        other: Dispositivos
+      order:
+        one: Encomenda
+        other: Encomendas
+      reservation:
+        one: Reserva
+        other: Reservas
+    attributes:
+      bill:
+        due_month: Mês de Vigência
+        status: Status
+        user_id: Usuário
+        value: Valor
+        created_at: Criado em
+        updated_at: Atualizado em
+        user: Usuário
+      user:
+        name: Nome
+        birthday: Data de Nascimento
+        gender: Sexo
+        created_at: Criado em
+        updated_at: Atualizado em
+        email: Email
+        auth_token: Token de Autenticação
+        apartment: Apartamento
+        orders: Encomendas
+        profile_image: Imagem de Perfil
+      building_message:
+        user: Usuário
+        message_description: Mensagem
+        message_title: Título
+        created_at: Criado em
+        updated_at: Atualizado em
+      building_location:
+        name: Nome
+        description: Descrição
+        created_at: Criado em
+        updated_at: Atualizado em
+        reservations: Reservas
+      order:
+        order_number: Número
+        delivery_address: Endereço de Entrega
+        user: Usuário
+        created_at: Criado em
+        updated_at: Atualizado em
+      device:
+        name: Nome
+        token: Token
+        enabled: Ativado
+        created_at: Criado em
+        updated_at: Atualizado em
+      reservation:
+        user: Usuário
+        building_location: Local
+        created_at: Criado em
+        updated_at: Atualizado em
+        start_hour: Hora de Início
+        end_hour: Hora de Término
+        event_date: Data do Evento
+        guest_quantity: Quantidade de Convidados
+        reservation_name: Nome da Reserva
+        status: Status

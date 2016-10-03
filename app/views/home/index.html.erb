@@ -1,0 +1,188 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="text-center m-t-lg">
+                <h1>
+                    Varanda Express
+                </h1>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="wrapper wrapper-content animated fadeInRight">
+          <div class="row">
+            <div class="col-lg-3">
+              <div class="widget style1 navy-bg">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <i class="fa fa-book fa-5x"></i>
+                  </div>
+                  <div class="col-xs-8 text-right">
+                    <span> Usuários </span>
+                    <h2 class="font-bold"><%= User.count %></h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="widget style1 lazur-bg">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <i class="fa fa-tags fa-5x"></i>
+                  </div>
+                  <div class="col-xs-8 text-right">
+                    <span> <%= t '.reservas' %> </span>
+                    <h2 class="font-bold"><%= Reservation.count %></h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="widget style1 yellow-bg">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <i class="fa fa-upload fa-5x"></i>
+                  </div>
+                  <div class="col-xs-8 text-right">
+                    <span> Manutenções </span>
+                    <h2 class="font-bold">4</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="widget style1 red-bg">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <i class="fa fa-download fa-5x"></i>
+                  </div>
+                  <div class="col-xs-8 text-right">
+                    <span> <%= t '.avisos' %> </span>
+                    <h2 class="font-bold"><%= BuildingMessage.count %></h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5><%= t '.locais_mais_reservados' %></h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div id="area-chart-reservations"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+  <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <h5>Últimas Reservas</h5>
+        <div class="ibox-tools">
+          <a class="collapse-link">
+            <i class="fa fa-chevron-up"></i>
+          </a>
+        </div>
+      </div>
+      <div class="ibox-content">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Local</th>
+              <th>Usuários</th>
+              <th>Dia do Evento</th>
+              <th>Hora da Reserva</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% Reservation.limit(5).order(created_at: :desc).each do |reservation| %>
+              <tr>
+                <td><%= reservation.building_location.name %></td>
+                <td><%= reservation.user.name %></td>
+                <td><%= reservation.event_date.strftime("%d/%m/%Y") %></td>
+                <td><%= reservation.created_at.strftime("%d/%m/%Y %H:%M:%S") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+$('#area-chart-reservations').highcharts({
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: ""
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        categories: <%= BuildingLocation.all.pluck(:name).to_s.html_safe %>,
+        title: {
+            text: null
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Quantidade',
+            align: 'middle'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    tooltip: {
+        headerFormat: '',
+        pointFormat: '{point.y} votes'
+    },
+    plotOptions: {
+        column: {
+            dataLabels: {
+                enabled: false
+            }
+        }
+    },
+    legend: {
+        layout: 'horizontal',
+        align: 'right',
+        verticalAlign: 'bottom',
+        x: -40,
+        y: 80,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+        shadow: true
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Answer share',
+        data: <%= area_chart_reservations_series %>
+    }]
+});
+</script>
