@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'active_model_serializers'
+gem 'active_model_serializers', require: true #due to uninitialized constant ActiveModelSerializers (NameError)
 gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git', branch: 'master'
 gem 'rails_admin-i18n'
 gem 'gcm'

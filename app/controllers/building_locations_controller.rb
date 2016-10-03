@@ -5,7 +5,7 @@ class BuildingLocationsController < ApplicationController
   def index
     @building_locations = BuildingLocation.all
 
-    render json: @building_locations
+    render json: @building_locations, root: nil
   end
 
   # GET /building_locations/1
