@@ -5,11 +5,16 @@ class BuildingMessagesController < ApplicationController
   def index
     @building_messages = BuildingMessage.all.order(created_at: :desc)
     @building_message = BuildingMessage.new
-    
+
     respond_to do |format|
       format.html
       format.json { render json: @building_messages, root: nil }
     end
+  end
+
+  def index_json
+    @building_messages = BuildingMessage.all.order(created_at: :desc)
+    render json: @building_messages, root: nil
   end
 
   # GET /building_messages/1

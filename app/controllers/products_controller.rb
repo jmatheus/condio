@@ -5,11 +5,11 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-    
-    respond_to do |format|
-      format.html
-      format.json { render json: @products, root: nil }
-    end
+  end
+
+  def index_json
+    @products = Product.all.order(created_at: :desc)
+    render json: @products, root: nil
   end
 
   # GET /products/1
