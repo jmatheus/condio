@@ -140,7 +140,7 @@ $('#area-chart-reservations').highcharts({
         text: ''
     },
     xAxis: {
-        categories: <%= BuildingLocation.all.pluck(:name).to_s.html_safe %>,
+        categories: <%= @building_locations.pluck(:name).to_s.html_safe %>,
         title: {
             text: null
         }
