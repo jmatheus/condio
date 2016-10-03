@@ -3,7 +3,7 @@ Condio::Application.routes.draw do
   get "home/index"
   get "home/minor"
   resources :products
-  resources :building_messages
+  resources :building_messages, :defaults => { :format => 'json' }
   get 'building_locations/dates/:id', to: 'building_locations#dates', as: 'building_locations_dates'
   resources :building_locations
   get 'reservations/history'
