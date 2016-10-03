@@ -8,7 +8,7 @@ class BuildingMessagesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @building_messages }
+      format.json { render json: @building_messages, root: nil }
     end
   end
 

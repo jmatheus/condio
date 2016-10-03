@@ -2,7 +2,7 @@ Condio::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get "home/index"
   get "home/minor"
-  resources :products
+  resources :products, :defaults => { :format => 'json' }
   resources :building_messages, :defaults => { :format => 'json' }
   get 'building_locations/dates/:id', to: 'building_locations#dates', as: 'building_locations_dates'
   resources :building_locations
