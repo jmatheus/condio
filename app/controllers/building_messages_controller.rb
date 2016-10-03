@@ -5,7 +5,7 @@ class BuildingMessagesController < ApplicationController
   def index
     @building_messages = BuildingMessage.all.order(created_at: :desc)
     @building_message = BuildingMessage.new
-
+    
     respond_to do |format|
       format.html
       format.json { render json: @building_messages, root: nil }
@@ -21,7 +21,7 @@ class BuildingMessagesController < ApplicationController
   def create
     @building_message = BuildingMessage.new(building_message_params)
     if @building_message.save
-      # NotificationService.notify
+      NotificationService.notify
       respond_to do |format|
         format.html { redirect_to building_messages_path }
         format.json { render json: @building_message, status: :created, location: @building_message }

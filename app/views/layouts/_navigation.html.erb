@@ -27,13 +27,13 @@
                 <% end %>
             </li>
             <li class="<%= 'active' if current_page?('/home/minor') %>">
-                <%= link_to "/products" do %>
+                <%= link_to(products_path("html")) do %>
                 <i class="fa fa-desktop"></i> <span class="nav-label">Manutenção Preventiva</span>
                 <% end %>
             </li>
             <li class="<%= 'active' if current_page?('/home/minor') %>">
-                <%= link_to "/building_messages" do %>
-                <i class="fa fa-clipboard"></i> <span class="nav-label">Mural de Avisos</span>
+                <%= link_to(building_messages_path("html")) do %>
+                    <i class="fa fa-clipboard"></i> <span class="nav-label">Mural de Avisos</span>
                 <% end %>
             </li>
         </ul>
