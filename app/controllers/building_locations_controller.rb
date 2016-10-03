@@ -43,7 +43,7 @@ class BuildingLocationsController < ApplicationController
 
   def dates
     @dates = Reservation.where(building_location_id: params[:id], status: 'active').pluck(:event_date)
-    render json: @dates
+    render json: @dates, root: nil
   end
 
   private
