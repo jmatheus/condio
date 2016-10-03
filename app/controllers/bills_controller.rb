@@ -4,7 +4,8 @@ class BillsController < ApplicationController
   # GET /bills
   # GET /bills.json
   def index
-    @bills = Bill.all, root: nil
+    @bills = Bill.all
+    render json: @bills, root: nil
   end
 
   def user_bills
