@@ -4,12 +4,12 @@ class BillsController < ApplicationController
   # GET /bills
   # GET /bills.json
   def index
-    @bills = Bill.all
+    @bills = Bill.all, root: nil
   end
 
   def user_bills
     @bills = Bill.where(user_id: params[:id]).order(created_at: :desc)
-    render json: @bills, each_serializer: BillSerializer
+    render json: @bills, each_serializer: BillSerializer, root: nil
   end
 
   # GET /bills/1
