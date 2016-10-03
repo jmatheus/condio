@@ -140,7 +140,7 @@ $('#area-chart-reservations').highcharts({
         text: ''
     },
     xAxis: {
-        categories: <%= @building_locations.pluck(:name).to_s.html_safe %>,
+        categories: <%= @reservation_keys.to_s.html_safe %>,
         title: {
             text: null
         }
@@ -182,7 +182,7 @@ $('#area-chart-reservations').highcharts({
     },
     series: [{
         name: 'Answer share',
-        data: <%= area_chart_reservations_series %>
+        data: <%= @reservation_values %>
     }]
 });
 </script>
