@@ -15,7 +15,7 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/1
   def show
-    render json: @reservation
+    render json: @reservation, root: nil
   end
 
   # POST /reservations
