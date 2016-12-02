@@ -37,6 +37,7 @@ gem 'active_model_serializers', require: true #due to uninitialized constant Act
 gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git', branch: 'master'
 gem 'rails_admin-i18n'
 gem 'gcm'
+gem 'rails-erd', '1.4.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
